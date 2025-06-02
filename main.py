@@ -1,22 +1,19 @@
 from graphics import *
+from maze import *
 
 def main():
     win = Window(800, 600)
-    
 
-    p1 = Point(100, 100)
-    p2 = Point(200, 200)
-    p3 = Point(300, 300)
-    p4 = Point(300, 400)
-    line = Line(p1, p2)
-    line2 = Line(p3, p4)
-    cell1 = Cell(win)
-    cell2 = Cell(win)
-    cell1.draw(100, 100, 200, 200)
-    cell2.draw(300, 300, 400, 400)
-    
-    #win.draw_line(line, "red")
-    #win.draw_line(line2, "red")
+    c1 = Cell(win)
+    c1.has_right_wall = False
+    c1.draw(50, 50, 100, 100)
+
+    c2 = Cell(win)
+    c2.has_left_wall = False
+    c2.has_bottom_wall = False
+    c2.draw(100, 50, 150, 100)
+
+    c1.draw_move(c2)
 
     win.wait_for_close()
 
