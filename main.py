@@ -10,9 +10,13 @@ def main():
     p4 = Point(300, 400)
     line = Line(p1, p2)
     line2 = Line(p3, p4)
+    cell1 = Cell(win)
+    cell2 = Cell(win)
+    cell1.draw(100, 100, 200, 200)
+    cell2.draw(300, 300, 400, 400)
     
-    win.draw_line(line, "red")
-    win.draw_line(line2, "red")
+    #win.draw_line(line, "red")
+    #win.draw_line(line2, "red")
 
     win.wait_for_close()
 
