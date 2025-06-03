@@ -42,14 +42,21 @@ class Line():
 
 class Cell():
     def __init__(self, window=None):
+        self.right_wall = None
+        self.bottom_wall = None
+        self.left_wall = None
+        self.top_line = None
+
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+
         self.__x1 = -1
         self.__x2 = -1
         self.__y1 = -1
         self.__y2 = -1
+
         self.__win = window
 
     def set_coords(self, x1, y1, x2, y2):
@@ -73,19 +80,27 @@ class Cell():
 
     def draw(self, x1, y1, x2, y2):
         self.set_coords(x1, y1, x2, y2)
+        self.top_line = Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1))
+        self.bottom_wall = Line(Point(self.__x1, self.__y2), Point(self.__x2, self.__y2))
+        self.left_wall = Line(Point(self.__x1, self.__y1), Point(self.__x1, self.__y2))
+        self.right_wall = Line(Point(self.__x2, self.__y2), Point(self.__x2, self.__y1))
 
         if self.has_top_wall:
-            self.top_line = Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1))
             self.__win.draw_line(self.top_line)
+        else:
+            self.__win.draw_line(self.top_line, "white")
 
         if self.has_bottom_wall:
-            self.bottom_wall = Line(Point(self.__x1, self.__y2), Point(self.__x2, self.__y2))
             self.__win.draw_line(self.bottom_wall)
+        else:
+            self.__win.draw_line(self.bottom_wall, "white")
 
         if self.has_left_wall:
-            self.left_wall = Line(Point(self.__x1, self.__y1), Point(self.__x1, self.__y2))
             self.__win.draw_line(self.left_wall)
+        else:
+            self.__win.draw_line(self.left_wall, "white")
 
         if self.has_right_wall:
-            self.right_wall = Line(Point(self.__x2, self.__y2), Point(self.__x2, self.__y1))
             self.__win.draw_line(self.right_wall)
+        else:
+            self.__win.draw_line(self.right_wall, "white")
