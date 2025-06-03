@@ -117,4 +117,12 @@ class Maze:
             for j in i:
                 j.visited = False
 
-        pass
+    def solve(self):
+        return self._solve_r(0, 0)
+
+    def _solve_r(self, i, j):
+        self.animate()
+        self.__cells[i][j].visited = True
+
+        if i == self.num_cols - 1 and j == self.num_rows - 1:
+            return True
