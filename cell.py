@@ -68,6 +68,9 @@ class Cell:
             self.__win.draw_line(self.right_wall, "white")
 
     def redraw(self):
+        if self.__win is None:
+            return
+
         if self.has_top_wall:
             self.__win.draw_line(self.top_line)
         else:
