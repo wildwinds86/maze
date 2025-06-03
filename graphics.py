@@ -1,6 +1,6 @@
 from tkinter import Tk, BOTH, Canvas
 
-class Window():
+class Window:
     def __init__(self, width, height):
         self.__root = Tk()
         self.__root.title("Maze Solver")
@@ -25,12 +25,12 @@ class Window():
         line.draw(self.__canvas, fill)
         
 
-class Point():
+class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
-class Line():
+class Line:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
@@ -40,7 +40,7 @@ class Line():
             self.p1.x, self.p1.y, self.p2.x, self.p2.y, fill=fill, width = 5
         )
 
-class Cell():
+class Cell:
     def __init__(self, window=None):
         self.right_wall = None
         self.bottom_wall = None
@@ -104,3 +104,38 @@ class Cell():
             self.__win.draw_line(self.right_wall)
         else:
             self.__win.draw_line(self.right_wall, "white")
+
+    def redraw(self):
+        if self.has_top_wall:
+            self.__win.draw_line(self.top_line)
+        else:
+            self.__win.draw_line(self.top_line, "white")
+
+        if self.has_bottom_wall:
+            self.__win.draw_line(self.bottom_wall)
+        else:
+            self.__win.draw_line(self.bottom_wall, "white")
+
+        if self.has_left_wall:
+            self.__win.draw_line(self.left_wall)
+        else:
+            self.__win.draw_line(self.left_wall, "white")
+
+        if self.has_right_wall:
+            self.__win.draw_line(self.right_wall)
+        else:
+            self.__win.draw_line(self.right_wall, "white")
+
+    def break_wall(self, direction):
+        match direction:
+            case "top":
+                self.has_top_wall = False
+            case "bottom":
+                self.has_bottom_wall = False
+            case "left":
+                self.has_left_wall = False
+            case "right":
+                self.has_right_wall = False
+
+        self.redraw()
+
