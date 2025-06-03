@@ -19,6 +19,7 @@ class Cell:
         self.__y2 = -1
 
         self.__win = window
+        self.visited = False
 
     def set_coords(self, x1, y1, x2, y2):
         self.__x1 = x1
