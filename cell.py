@@ -35,7 +35,7 @@ class Cell:
         end = to_cell.get_centre()
         l = Line(start, end)
         if undo:
-            fill = "gray"
+            fill = "white"
         else:
             fill = "red"
         self.__win.draw_line(l, fill)

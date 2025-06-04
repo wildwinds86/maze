@@ -4,11 +4,11 @@ import sys
 
 
 def main():
-    num_rows = 12
-    num_cols = 10
+    num_rows = 16
+    num_cols = 25
     margin = 50
-    screen_x = 1024
-    screen_y = 768
+    screen_x = 2560
+    screen_y = 1600
     cell_size_x = (screen_x - 2 * margin) / num_cols
     cell_size_y = (screen_y - 2 * margin) / num_rows
 
